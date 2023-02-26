@@ -1,0 +1,52 @@
+spring:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: ${dburl}
+    username: ${dbuser}
+    password: ${dbpassword}
+  sql:
+    init:
+      mode: always
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+    properties:
+      hibernate:
+        format-sql: true
+    defer-datasource-initialization: true
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: TheMobileleApplication@gmail.com
+    password: ${mailpassword}
+    properties:
+      mail:
+        debug: true
+        transport:
+          protocol: true
+        smtp:
+          auth: true
+          starttls:
+            enabled: true
+logging:
+  level:
+    org.springframework.security: DEBUG
+cloudinary:
+  cloud-name: dwvhbbfvq
+  api-key: 358964351269889
+  api-secret: ${cloudinarysecret}
+server:
+  error:
+    path: /error
+    whitelabel:
+      enabled: false

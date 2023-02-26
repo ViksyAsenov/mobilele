@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>MobileLe</title>
+  <link rel="stylesheet" href="/css/reset-css.css"/>
+  <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+  <link rel="stylesheet" type="text/css" href="/css/main.css"/>
+  <script src="/js/jquery-3.5.1.slim.min.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div th:replace="fragments/navbar">Navbar</div>
+
+<div class="container-fluid" th:object="${offer}">
+  <h2 class="text-center text-white mt-5">Details</h2>
+  <div class="offers row mx-auto d-flex flex-row justify-content-center">
+    <div class="offer card col-sm-2 col-md-3  col-lg-4 m-1 p-0" >
+
+      <div class="card-body pb-1">
+        <h5 class="card-title"><span th:text="*{year + ' ' + model + ' ' + brand}"></span></h5>
+      </div>
+      <ul class="offer-details list-group list-group-flush">
+        <li class="list-group-item">
+          <div class="card-text">Mileage: <span th:text="*{mileage}"></span></div>
+          <div class="card-text">Price: <span th:text="*{price}"></span></div>
+          <div class="card-text">Engine type: <span th:text="*{engine}"></span></div>
+          <div class="card-text">Transmission type: <span th:text="*{transmission}"></span></div>
+          <div class="card-text">Description: <span th:text="*{description}"></span></div>
+          <div class="card-text">Offer created: <span th:text="*{created}"></span></div>
+          <div class="card-text">Offer modified: <span th:text="*{modified}"></span></div>
+          <div class="card-text">Seller: <span th:text="*{firstName + ' ' + lastName}"></span></div>
+        </li>
+      </ul>
+      <div class="card-body">
+        <div class="row">
+          <a class="btn btn-link" th:if="*{isOwner() == true}" th:href="@{/offers/{id}/update(id=*{id})}">Update</a>
+
+          <form th:if="*{isOwner() == true}" th:action="@{/offers/{id}(id=*{id})}" th:method="delete">
+            <input type="submit" class="btn btn-link" value="Delete">
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="offer card col-sm-2 col-md-3  col-lg-4 m-1 p-0">
+      <img th:src="*{imageUrl}" class="card-img-top"  alt="Car image">
+    </div>
+  </div>
+</div>
+</body>
+</html>

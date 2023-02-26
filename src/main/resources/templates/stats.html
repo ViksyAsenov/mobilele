@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <meta charset="UTF-8">
+  <title>MobileLe</title>
+  <link rel="stylesheet" href="/css/reset-css.css"/>
+  <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+  <link rel="stylesheet" type="text/css" href="/css/main.css"/>
+  <script src="/js/jquery-3.5.1.slim.min.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div th:replace="fragments/navbar">Navbar</div>
+
+<div class="container-fluid">
+  <h5 class="text-center text-white mt-5">Statistics of Mobilele are the following:</h5>
+  <h3 class="text-center text-white mt-5">Total Requests: <th:block th:text="${stats.getTotalRequests()}"></th:block></h3>
+  <h3 class="text-center text-white mt-5">Anonymous Requests: <th:block th:text="${stats.getAnonRequests()}"></th:block></h3>
+  <h3 class="text-center text-white mt-5">Authorized Requests: <th:block th:text="${stats.getAuthRequests()}"></th:block></h3>
+</div>
+
+</body>
+</html>
